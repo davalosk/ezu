@@ -1,0 +1,26 @@
+{% extends 'courseinfo/base.html' %}
+
+{% block title %}
+    Error Deleting Course
+{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>Error Deleting Course</h2>
+        <p>
+            You may not delete course {{ course }}.  This
+            course is currently assigned to the following
+            semesters:
+        </p>
+
+        <ul>
+            {% for semester in semesters %}
+            <li><a href="{{ semester.get_absolute_url }}">{{ semester }}</a></li>
+            {%  endfor %}
+        </ul>
+
+        <p>
+            Return to <a href="{% url 'courseinfo_course_list_urlpattern' %}">Course List</a>.
+        </p>
+    </div>
+{% endblock %}
